@@ -1,0 +1,48 @@
+# DivorceTalk.in — a softer place on the internet.
+# We welcome respectful crawlers. We do not allow scraping of private endpoints.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+# Be respectful — emotional content is sensitive.
+Crawl-delay: 1
+
+# AI crawlers — we welcome being cited, with respect.
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /profile
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://divorcetalk.in/sitemap.xml
+
+# Host
+Host: https://divorcetalk.in
