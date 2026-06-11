@@ -21,7 +21,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const columns: {
   heading: string;
-  links: { label: string; to: string; badge?: string }[];
+  links: { label: string; to: string; badge?: string; external?: boolean }[];
 }[] = [
   {
     heading: "Community",
@@ -51,6 +51,7 @@ const columns: {
       { label: "Safety Policy", to: "/safety" },
       { label: "Crisis Help", to: "/emergency", badge: "24×7" },
       { label: "Report Content", to: "/safety#report" },
+      { label: "Sitemap", to: "/sitemap.xml", external: true },
     ],
   },
   {
@@ -229,21 +230,38 @@ export default function Footer() {
                   {col.heading}
                 </h4>
                 <ul className="space-y-2.5">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        to={link.to}
-                        className="inline-flex items-center gap-1.5 text-[13.5px] text-[var(--dt-text-secondary)] hover:text-[var(--dt-primary)] transition-colors"
-                      >
+                  {col.links.map((link) => {
+                    const content = (
+                      <>
                         {link.label}
                         {link.badge && (
                           <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[var(--dt-primary-light)] text-[var(--dt-primary)]">
                             {link.badge}
                           </span>
                         )}
-                      </Link>
-                    </li>
-                  ))}
+                      </>
+                    );
+                    const className =
+                      "inline-flex items-center gap-1.5 text-[13.5px] text-[var(--dt-text-secondary)] hover:text-[var(--dt-primary)] transition-colors";
+                    return (
+                      <li key={link.label}>
+                        {link.external ? (
+                          <a
+                            href={link.to}
+                            target="_blank"
+                            rel="noopener"
+                            className={className}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link to={link.to} className={className}>
+                            {content}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
