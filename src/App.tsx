@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router";
-import DemoBanner from "@/components/DemoBanner";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import BottomNav from "@/components/BottomNav";
@@ -29,7 +28,6 @@ export default function App() {
     <>
       <ScrollProgress />
       <ScrollToTop />
-      <DemoBanner />
       <div className="pb-24 lg:pb-0">
         <Routes>
           <Route path="/" element={<Home />} />
