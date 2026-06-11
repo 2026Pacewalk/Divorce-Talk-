@@ -162,7 +162,7 @@ export default function NotificationsPopover() {
       <PopoverContent
         align="end"
         sideOffset={12}
-        className="w-[360px] p-0 overflow-hidden rounded-2xl border-[var(--dt-border-light)] bg-[var(--dt-card)] shadow-2xl ring-1 ring-[var(--dt-text)]/5"
+        className="z-[110] w-[360px] p-0 overflow-hidden rounded-2xl border-[var(--dt-border-light)] bg-[var(--dt-card)] shadow-2xl ring-1 ring-[var(--dt-text)]/5"
       >
         <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--dt-border-light)]">
           <div>

@@ -53,7 +53,7 @@ export default function ProfileDropdown() {
       <PopoverContent
         align="end"
         sideOffset={10}
-        className="w-[260px] p-0 overflow-hidden rounded-2xl border-[var(--dt-border-light)] bg-[var(--dt-card)] shadow-2xl ring-1 ring-[var(--dt-text)]/5"
+        className="z-[110] w-[260px] p-0 overflow-hidden rounded-2xl border-[var(--dt-border-light)] bg-[var(--dt-card)] shadow-2xl ring-1 ring-[var(--dt-text)]/5"
       >
         <div className="px-4 py-4 bg-gradient-to-br from-[var(--dt-primary-light)]/50 via-transparent to-[var(--dt-secondary-light)]/50">
           <div className="flex items-center gap-3">
