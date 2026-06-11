@@ -14,6 +14,20 @@ import {
 
 const moodOptions = ["numb", "anxious", "angry", "lonely", "hopeful", "exhausted", "healing"];
 
+// Fallback category list used when the server query hasn't returned yet,
+// when the DB is unavailable, or in demo mode. Mirrors db/seed.ts.
+const fallbackCategories: { slug: string; name: string }[] = [
+  { slug: "toxic-marriage", name: "Toxic Marriage" },
+  { slug: "emotional-neglect", name: "Emotional Neglect" },
+  { slug: "separation", name: "Separation" },
+  { slug: "infidelity", name: "Infidelity" },
+  { slug: "in-laws", name: "In-Laws" },
+  { slug: "loneliness", name: "Loneliness" },
+  { slug: "staying-for-kids", name: "Staying for Kids" },
+  { slug: "confusion", name: "Confusion" },
+  { slug: "recovery", name: "Recovery" },
+];
+
 const moodColors: Record<string, string> = {
   hopeful: "bg-[var(--dt-secondary-light)] text-[var(--dt-secondary)]",
   healing: "bg-[#E8F5E9] text-[#4A7C59]",
@@ -159,13 +173,19 @@ function PostCard({ post, onReact }: { post: any; onReact?: (type: string) => vo
 function CreatePostModal({ onClose }: { onClose: () => void }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState("divorce");
   const [mood, setMood] = useState<string | undefined>();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const utils = trpc.useUtils();
 
-  const { data: categories } = trpc.category.list.useQuery();
+  const { data: serverCategories } = trpc.category.list.useQuery();
+  // Use whatever the server returns; otherwise fall back to the seed list so
+  // the dropdown is never empty (demo mode, DB down, first paint).
+  const categories =
+    serverCategories && serverCategories.length > 0
+      ? serverCategories
+      : fallbackCategories;
+  const [category, setCategory] = useState(categories[0]?.slug ?? "toxic-marriage");
 
   const createPost = trpc.post.create.useMutation({
     onSuccess: () => {
@@ -257,7 +277,7 @@ function CreatePostModal({ onClose }: { onClose: () => void }) {
               onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl bg-[var(--dt-card)] border border-[var(--dt-border)] text-[var(--dt-text)] text-[14px] focus:outline-none focus:border-[var(--dt-primary)]"
             >
-              {categories?.map((cat) => (
+              {categories.map((cat) => (
                 <option key={cat.slug} value={cat.slug}>{cat.name}</option>
               ))}
             </select>
