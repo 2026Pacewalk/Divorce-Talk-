@@ -1,8 +1,9 @@
 // DivorceTalk.in service worker
 // Tiny, intentionally simple: caches the app shell + key static assets,
 // serves them when offline, and never gets in the way of /api/* or dev HMR.
+// Bump VERSION on any deploy to roll out updates — clients see the toast.
 
-const VERSION = "dt-v1";
+const VERSION = "dt-v2";
 const SHELL_CACHE = `${VERSION}-shell`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 
@@ -48,7 +49,15 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(SHELL_CACHE).then((cache) => cache.addAll(SHELL).catch(() => {}))
   );
-  self.skipWaiting();
+  // Don't auto-skip — let the client decide via SKIP_WAITING message so we
+  // can show the "new version available — refresh?" toast first.
+});
+
+// Allow the page to ask us to activate immediately.
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {

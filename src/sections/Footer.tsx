@@ -14,6 +14,7 @@ import {
   Send,
   ArrowRight,
   Quote,
+  Map,
 } from "lucide-react";
 import BackToTop from "@/components/BackToTop";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -289,6 +290,16 @@ export default function Footer() {
               If you are in immediate danger, please contact local emergency
               services.
             </p>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener"
+              aria-label="View the XML sitemap (opens in a new tab)"
+              className="group inline-flex items-center gap-1.5 mt-3 text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--dt-card)] border border-[var(--dt-border-light)] text-[var(--dt-text-secondary)] hover:text-[var(--dt-primary)] hover:border-[var(--dt-primary)]/40 transition-colors"
+            >
+              <Map size={11} className="group-hover:scale-110 transition-transform" />
+              View sitemap
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <Link
