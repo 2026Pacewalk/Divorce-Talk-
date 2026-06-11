@@ -264,6 +264,25 @@ export const routeMeta: Record<string, RouteMeta> = {
       "Sign in or join anonymously in 10 seconds. No real names. No advertisers. Your privacy is the point.",
     ogType: "website",
   },
+
+  "/sitemap": {
+    title: "Sitemap — Every Page on DivorceTalk.in",
+    description:
+      "Every page on DivorceTalk in one calm place. Grouped by what you might be looking for — start here, community, your space, safety.",
+    keywords: "sitemap, divorcetalk pages, site index",
+    ogType: "website",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Sitemap",
+      url: `${SITE}/sitemap`,
+      isPartOf: { "@id": `${SITE}/#website` },
+      breadcrumb: BREADCRUMB([
+        { name: "Home", path: "/" },
+        { name: "Sitemap", path: "/sitemap" },
+      ]),
+    },
+  },
 };
 
 /**

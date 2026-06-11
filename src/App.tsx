@@ -21,6 +21,7 @@ import HearMe from "./pages/HearMe";
 import CheckIn from "./pages/CheckIn";
 import Stories from "./pages/Stories";
 import About from "./pages/About";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/check-in" element={<CheckIn />} />
           <Route path="/stories" element={<Stories />} />
           <Route path="/about" element={<About />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <PacewalkCredit />

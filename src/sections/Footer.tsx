@@ -51,7 +51,7 @@ const columns: {
       { label: "Safety Policy", to: "/safety" },
       { label: "Crisis Help", to: "/emergency", badge: "24×7" },
       { label: "Report Content", to: "/safety#report" },
-      { label: "Sitemap", to: "/sitemap.xml", external: true },
+      { label: "Sitemap", to: "/sitemap" },
     ],
   },
   {
@@ -308,16 +308,14 @@ export default function Footer() {
               If you are in immediate danger, please contact local emergency
               services.
             </p>
-            <a
-              href="/sitemap.xml"
-              target="_blank"
-              rel="noopener"
-              aria-label="View the XML sitemap (opens in a new tab)"
+            <Link
+              to="/sitemap"
+              aria-label="View the full sitemap"
               className="group inline-flex items-center gap-1.5 mt-3 text-[11px] font-medium px-2.5 py-1 rounded-full bg-[var(--dt-card)] border border-[var(--dt-border-light)] text-[var(--dt-text-secondary)] hover:text-[var(--dt-primary)] hover:border-[var(--dt-primary)]/40 transition-colors"
             >
               <Map size={11} className="group-hover:scale-110 transition-transform" />
               View sitemap
-            </a>
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <Link
