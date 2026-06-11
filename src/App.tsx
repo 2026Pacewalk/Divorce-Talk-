@@ -3,6 +3,7 @@ import DemoBanner from "@/components/DemoBanner";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import BottomNav from "@/components/BottomNav";
+import PacewalkCredit from "@/components/PacewalkCredit";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Community from "./pages/Community";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <PacewalkCredit />
       </div>
       <BottomNav />
     </>
